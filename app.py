@@ -31,18 +31,23 @@ st.markdown("""
 [data-testid="stAppViewContainer"] { 
     background-color: #ffe6e6; color: black; 
 }
+.judul-tomat {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left; 
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    .judul-tomat {
+        font-size: 28px;
+        text-align: center; /* Rata tengah di HP */
+    }
+}
 .welcome-box { 
     background-color: #0B6623; 
     color: white; padding: 25px; 
     border-radius: 15px; 
-    margin-bottom: 20px;
-    text-align: center;
-}
-.main-title {
-    text-align: center; 
-    font-size: 28px; 
-    line-height: 1.2; 
-    font-weight: bold;
     margin-bottom: 20px;
 }
 .hasil-box {   
@@ -110,7 +115,7 @@ CLASS_DESCRIPTIONS = {
 # == 4.HALAMAN BERANDA ==
 
 if selected == "Beranda":
-    st.markdown("<h1 class='main-title'>🍎 Deteksi Penyakit <br> Tanaman Tomat</h1>", unsafe_allow_html=True)
+    st.markdown('<div class="judul-tomat">🍎 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
 
     st.markdown("""
     <div class="welcome-box">
@@ -157,12 +162,10 @@ if selected == "Beranda":
 
 # === 5.Judul halaman ===
 elif selected == "Deteksi Tanaman":
-    st.markdown('<div class="judul-responsif">🍅 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
+    st.markdown('<div class="judul-tomat">🍅 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
     
     MODEL_PATH = os.path.join(BASE_DIR, "model_deteksi_tomat_best.h5")
-    @st.cache_resource
-    def get_model():
-        return load_model(MODEL_PATH)
+    model = load_model(MODEL_PATH)
     
     class_names = ["antranoksa", "bercak_daun", "busuk_daun", "sehat"]
     st.write("Upload gambar tomat (buah/daun), lalu sistem akan mendeteksi jenis penyakit yang menyerang tanaman tomat serta menampilkan cara penanganannya.")
