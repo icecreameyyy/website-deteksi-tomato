@@ -115,7 +115,7 @@ CLASS_DESCRIPTIONS = {
 # == 4.HALAMAN BERANDA ==
 
 if selected == "Beranda":
-    st.markdown('<div class="judul-tomat">🍎 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
+    st.markdown('<div class="judul-tomat">🍎 Deteksi Penyakit Tanaman Tomat</div>', unsafe_allow_html=True)
 
     st.markdown("""
     <div class="welcome-box">
@@ -162,7 +162,7 @@ if selected == "Beranda":
 
 # === 5.Judul halaman ===
 elif selected == "Deteksi Tanaman":
-    st.markdown('<div class="judul-tomat">🍅 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
+    st.markdown('<div class="judul-tomat">🍅 Deteksi Penyakit Tanaman Tomat</div>', unsafe_allow_html=True)
     
     MODEL_PATH = os.path.join(BASE_DIR, "model_deteksi_tomat_best.h5")
     model = load_model(MODEL_PATH)
