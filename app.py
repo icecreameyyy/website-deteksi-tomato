@@ -37,6 +37,18 @@ st.markdown("""
     border-radius: 15px; 
     margin-bottom: 20px; 
 }
+.judul-responsif {
+    font-size: 40px; 
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    .judul-responsif {
+        font-size: 28px; 
+    }
+}
 .hasil-box {   
     border-radius: 10px; 
     padding: 10px; 
@@ -150,13 +162,12 @@ if selected == "Beranda":
 
 # === 5.Judul halaman ===
 elif selected == "Deteksi Tanaman":
-    st.title("🍅 Deteksi Penyakit Tanaman Tomat")
+    st.markdown('<div class="judul-responsif">🍅 Deteksi Penyakit <br> Tanaman Tomat</div>', unsafe_allow_html=True)
     
     MODEL_PATH = os.path.join(BASE_DIR, "model_deteksi_tomat_best.h5")
     model = load_model(MODEL_PATH)
     
     class_names = ["antranoksa", "bercak_daun", "busuk_daun", "sehat"]
-
     st.write("Upload gambar tomat (buah/daun), lalu sistem akan mendeteksi jenis penyakit yang menyerang tanaman tomat serta menampilkan cara penanganannya.")
 
 # === 6.Upload gambar ===
