@@ -31,6 +31,9 @@ st.markdown("""
 [data-testid="stAppViewContainer"] { 
     background-color: #ffe6e6; color: black; 
 }
+header[data-testid="stHeader"] {
+        background-color: #ff4d4d;
+}
 .judul-tomat {
     font-size: 40px;
     font-weight: bold;
