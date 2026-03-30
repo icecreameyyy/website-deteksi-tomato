@@ -96,8 +96,7 @@ CLASS_IMAGES = {
 }
 
 CLASS_DESCRIPTIONS = {
-    "Antranoksa": "Antraknosa adalah penyakit yang disebabkan oleh jamur dari genus Colletotrichum."
-                  "Gejalanya berupa bercak cekung berwarna cokelat kehitaman pada buah. Pada tahap lanjut,"
+    "Antranoksa": "Antraknosa adalah penyakit yang disebabkan oleh jamur dari genus Colletotrichum. Gejalanya berupa bercak cekung berwarna cokelat kehitaman pada buah. Pada tahap lanjut,"
                   "bercak dapat membesar dan menyebabkan jaringan tanaman mati.",
 
     "Bercak Daun":"Penyakit bercak daun ditandai dengan munculnya bercak-bercak kecil berwarna cokelat atau kehitaman pada permukaan daun."
