@@ -174,7 +174,7 @@ elif selected == "Deteksi Tanaman":
     st.write("Upload gambar tomat (buah/daun), lalu sistem akan mendeteksi jenis penyakit yang menyerang tanaman tomat serta menampilkan cara penanganannya.")
 
 # === 6.Upload gambar ===
-    uploaded_file = st.file_uploader("Pilih gambar tomat", type=["jpg", "png", "jpeg"])
+    uploaded_file = st.file_uploader("Klik tombol di bawah atau seret gambar tomat Anda ke sini untuk mulai deteksi", type=["jpg", "png", "jpeg"])
 
     if uploaded_file:
         img = Image.open(uploaded_file)
