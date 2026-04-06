@@ -11,7 +11,7 @@ from streamlit_option_menu import option_menu
 st.set_page_config(
     page_title="Deteksi Penyakit Tanaman Tomat",
     page_icon="🍅",
-    layout="centered" 
+    layout="wide" 
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
