@@ -44,7 +44,7 @@ header[data-testid="stHeader"] {
 @media (max-width: 600px) {
     .judul-tomat {
         font-size: 28px;
-        text-align: center; /* Rata tengah di HP */
+        text-align: center;
     }
 }
 .welcome-box { 
@@ -83,6 +83,22 @@ header[data-testid="stHeader"] {
     text-align: center; 
     font-weight: bold; 
 }
+
+/* === TAMBAHAN UNTUK FILE UPLOADER === */
+[data-testid="stFileUploader"] {
+    border: 3px dashed #ff4b4b;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #fff5f5;
+    text-align: center;
+}
+
+[data-testid="stFileUploader"] div {
+    font-size: 18px;
+    color: #444;
+}
+/* === SELESAI === */
+
 </style>
 """, unsafe_allow_html=True)
 
