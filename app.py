@@ -163,45 +163,60 @@ if selected == "Beranda":
         with st.expander("Lihat Deskripsi"):
             st.markdown(f"<div style='text-align: justify;'>{CLASS_DESCRIPTIONS[label]}</div>", unsafe_allow_html=True)
 
-# === 5.Judul halaman ===
+# === 5. Halaman Deteksi ===
 elif selected == "Deteksi Tanaman":
     st.markdown('<div class="judul-tomat">🍅 Deteksi Penyakit Tanaman Tomat</div>', unsafe_allow_html=True)
     
+    # Memuat Model
     MODEL_PATH = os.path.join(BASE_DIR, "model_deteksi_tomat_best.h5")
     model = load_model(MODEL_PATH)
     
     class_names = ["antranoksa", "bercak_daun", "busuk_daun", "sehat"]
-    st.write("Upload gambar tomat (buah/daun), lalu sistem akan mendeteksi jenis penyakit yang menyerang tanaman tomat serta menampilkan cara penanganannya.")
+    
+    st.write("Upload gambar tomat (buah/daun), lalu sistem akan mendeteksi jenis penyakit serta menampilkan cara penanganannya.")
 
-# === 6.Upload gambar ===
-    uploaded_file = st.file_uploader("Klik tombol di bawah atau seret gambar tomat Anda ke sini untuk mulai deteksi", type=["jpg", "png", "jpeg"])
+    # === 6. Upload gambar (Dikecilkan dengan kolom) ===
+    st.write("")
+    col_kiri, col_tengah, col_kanan = st.columns([1, 2, 1]) # Membuat kotak upload lebih ramping
+    
+    with col_tengah:
+        uploaded_file = st.file_uploader(
+            "Klik tombol di bawah atau seret gambar tomat Anda ke sini untuk mulai deteksi", 
+            type=["jpg", "png", "jpeg"]
+        )
 
+    # Logika jika file sudah diupload
     if uploaded_file:
         img = Image.open(uploaded_file)
+        
+        # Menampilkan gambar preview
         _, col_img, _ = st.columns([1, 4, 1])
         with col_img:
             st.image(img, caption="📸 Gambar yang diunggah", use_container_width=True)
 
+        # Preprocessing Gambar
         img_resized = img.resize((150, 150))
         img_array = image.img_to_array(img_resized) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
+        # Proses Prediksi
         with st.spinner("🔍 Sedang memproses gambar..."):
             time.sleep(0.8)
             prediction = model.predict(img_array)
             predicted_class = class_names[np.argmax(prediction)]
             pretty = predicted_class.replace("_", " ").title()
         
+            # Menentukan warna kotak hasil
             gaya_kotak = "sehat-style" if predicted_class == "sehat" else "sakit-style"
 
-            # -- 7.TAMPILAN HASIL PREDIKSI --
+            # -- 7. TAMPILAN HASIL PREDIKSI --
             st.markdown(f"""       
                 <div class='hasil-box {gaya_kotak}'>
-                        Hasil Prediksi: {pretty}
-                        </div>
-                        """, unsafe_allow_html=True)
+                    Hasil Prediksi: {pretty}
+                </div>
+                """, unsafe_allow_html=True)
             
-            # --8. REKOMENDASI PENANGANAN --
+            # -- 8. REKOMENDASI PENANGANAN --
             if predicted_class == "antranoksa":
                 tips = [
                     "Buang dan bakar bagian tanaman yang terinfeksi.",
@@ -216,24 +231,24 @@ elif selected == "Deteksi Tanaman":
                 ]
             elif predicted_class == "busuk_daun":
                 tips = [
-                    "Hindari penyiraman berlebihan.",
+                    "Hindari penyiraman berlebihan terutama pada sore hari.",
                     "Gunakan fungisida berbahan aktif mancozeb atau metalaksil.",
-                    "Rotasi tanaman setiap musim tanam."
+                    "Lakukan rotasi tanaman setiap musim tanam."
                 ]
-            else: # Sehat
+            else: # Tanaman Sehat
                 tips = [
                     "Pertahankan sanitasi lahan yang bersih.",
                     "Berikan nutrisi/pupuk secara teratur sesuai dosis.",
                     "Lakukan pengecekan rutin seminggu dua kali."
                 ]
 
-            # --9. TAMPILAN KOTAK REKOMENDASI --
+            # -- 9. TAMPILAN KOTAK REKOMENDASI --
             rekomendasi_html = "".join([f"<li>{item}</li>" for item in tips])
             st.markdown(f"""
-            <div class="rekomendasi-box">
-                <p>🩺 <b>Rekomendasi Penanganan untuk {pretty}:</b></p>
-                <ul style="margin-bottom: 0;">
-                    {rekomendasi_html}
-                </ul>
-            </div>
-            """, unsafe_allow_html=True)
+                <div class="rekomendasi-box">
+                    <p style="font-size:18px;">🩺 <b>Rekomendasi Penanganan untuk {pretty}:</b></p>
+                    <ul style="margin-bottom: 0; line-height: 1.6;">
+                        {rekomendasi_html}
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
