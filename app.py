@@ -37,7 +37,7 @@ header[data-testid="stHeader"] {
 .judul-tomat {
     font-size: 40px;
     font-weight: bold;
-    text-align: left; 
+    text-align: center; 
     line-height: 1.2;
     margin-bottom: 20px;
 }
