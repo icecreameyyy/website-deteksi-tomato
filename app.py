@@ -123,7 +123,7 @@ if selected == "Beranda":
     st.markdown("""
     <div class="welcome-box">
         <h3>Selamat Datang Di Website Deteksi Penyakit Tomat</h3>
-        <p>Aplikasi ini menggunakan model Convolutional Neural Network (CNN) untuk mendeteksi penyakit pada daun tomat secara otomatis.</p>
+        <p>Aplikasi ini menggunakan model Convolutional Neural Network (CNN) untuk mendeteksi penyakit pada daun dan buah tomat secara otomatis.</p>
         <p>Terdapat tiga jenis penyakit dan dua kategori tanaman sehat di bawah ini.</p>
     </div>
     """, unsafe_allow_html=True)
