@@ -140,7 +140,6 @@ if selected == "Beranda":
             if os.path.exists(CLASS_IMAGES[label]):
                 st.image(CLASS_IMAGES[label], use_container_width=True)
             with st.expander("Lihat Deskripsi"):
-                # PERUBAHAN DISINI: Menambahkan div style justify
                 st.markdown(f"<div style='text-align: justify;'>{CLASS_DESCRIPTIONS[label]}</div>", unsafe_allow_html=True)
 
     # -- BARIS 2: (2 Kotak Sehat)  --
