@@ -32,7 +32,7 @@ st.markdown("""
     background-color: #ffe6e6; color: black; 
 }
 header[data-testid="stHeader"] {
-        background-color: #ff4d4d;
+        background-color: #FF0000;
 }
 .judul-tomat {
     font-size: 40px;
@@ -128,7 +128,7 @@ if selected == "Beranda":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("## Daftar Kelas")
+    st.markdown("## Jenis Penyakit")
     keys = list(CLASS_DESCRIPTIONS.keys())
 
     # -- BARIS 1: (3 Penyakit) --
