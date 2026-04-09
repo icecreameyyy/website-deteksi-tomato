@@ -29,7 +29,7 @@ selected = option_menu(
 st.markdown("""
 <style>
 [data-testid="stAppViewContainer"] { 
-    background-color: #ffe6e6; color: black; 
+    background-color: #00ff00; color: black; 
 }
 header[data-testid="stHeader"] {
         background-color: #ff4d4d;
